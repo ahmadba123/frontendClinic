@@ -1,0 +1,46 @@
+.coantainerPatient{
+    display: flex;
+    /* justify-content: space-between; */
+    padding-top: 2rem;
+align-items: center;
+flex-direction: column;
+height: 92vh;
+/* overflow: hidden; */
+}
+.headerPatient {
+    width: 88%;
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 2rem;
+}
+.spanNbPatient{
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+.SearchPatient{
+    display: flex;
+    justify-content: end;
+}
+/* .tabledrivergrid .k-grid{
+    width: 970px !important 
+
+} */
+.BTNremove{
+    background-color: #C74545 !important;
+    /* margin-left: 10px; */
+    color: white !important;
+    width: 20px;
+}
+.BTNEdit{
+    background-color: #455CC7 !important;
+    /* margin-left: 10px; */
+    color: white !important;
+}
+td.k-command-cell {
+    display: flex;
+    justify-content: space-between;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    font-size:  0.8rem !important;
+
+}

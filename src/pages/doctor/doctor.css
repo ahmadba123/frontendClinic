@@ -1,0 +1,119 @@
+.containerDoctor{
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+
+}
+.headerDoctor1{
+    display: flex;
+}
+
+.container{
+    margin-left: 223px;
+}
+.notFound{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5rem;
+}
+.addBtnadmin{
+    border-radius: 10px !important;
+
+}
+.css-e9dwjs-MuiButtonBase-root-MuiButton-root:hover{
+    background-color: white !important;
+    color:#455CC7;
+    border-radius: 10px !important;
+
+}
+.headerDoctor{
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 2rem;
+    width: 100% !important;
+
+}
+/* .headerDoctor {
+    width: 100%;
+} */
+.container.containerDoctor {
+    display: grid;
+    justify-content: center;
+}
+.spanNbDoctor{
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.k-header{
+width: -1% !important;
+} 
+.fieldTable{
+    text-align: center;
+    color: #22303e;
+}
+.fieldTableAction{
+    text-align:right;
+
+}
+td.k-command-cell {
+    text-align: center !important;
+}
+.BtnInfo{
+    background-color: #455CC7 !important;
+    border-color: #455CC7 !important;
+    color: white !important;
+}
+.BtnRemv{
+    background-color: #C74545 !important;
+    border-color: #C74545 !important;
+    color: white !important;  
+}
+.k-link{
+    display: flex;
+justify-content: center;}
+.k-cell-inner > .k-link{
+    justify-content: center !important;
+}
+.k-grid{
+    width: 1017px !important 
+
+}
+.Search{
+    display: flex;
+    justify-content: end;
+    width: 70%;
+
+}
+@media screen and (max-width: 992px) {
+    .headerDoctor{
+        margin-top: 3rem;
+        display: flex;
+        justify-content: end;
+    }
+    .containerDoctor{
+        display: flex;
+        justify-content:center;
+    }
+   
+    .css-1orzy9s {
+width: 46% !important;
+        display: flex;
+    justify-content: space-between; 
+    }
+    span.spanNbDoctor {
+        margin-right: 1rem;
+    }
+    .tabledrivergrid{
+        background-color: #22303e !important;
+        width: 500px !important;
+        display: flex;
+        justify-content: center !important;
+    }
+    
+  
+
+}
