@@ -17,14 +17,17 @@ import {
 import Pagination from "../../components/pagination/pagination" 
 import "./labs.css"
 import EditServises from './EditServises';
+import ViewLab from './viewLab';
 function Labs() {
   const [services, setServices] = useState([]);
   const [labs, setLabs] = useState([]);
 
   const [searchedServices, setSearchedServices] = useState([])
   const [openEdit, setOpenEdit] = useState({ open: false, data: {} });
+
   const [dataItem, setDataItem] = useState({})
 
+  const [openLab, setOpenLab] = useState(false);
   const [open, setOpen] = useState(false)
   // const [countlab, setcountlab] = useState(0);
   //
@@ -36,6 +39,14 @@ function Labs() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = searchedServices.slice(indexOfFirstPost, indexOfLastPost);
 
+const handleClickOpenLab = () => {
+  setOpenLab(true);
+};
+
+
+const handleCloseLab = () => {
+  setOpenLab(false);
+};
   const setInputsearch = (value) => {
   const searchedData = services.filter((val) => {
     if (value === "") {
@@ -111,6 +122,7 @@ function Labs() {
           handleOpenEdit(data)
           setDataItem(data);
         }}
+        handleClickOpenLab={handleClickOpenLab}
 
       />
     );
@@ -208,6 +220,15 @@ function Labs() {
           labs={labs}
 
         />}
+      {openLab &&  
+      <ViewLab
+          handleClickOpenLab={handleClickOpenLab}
+          handleCloseLab={handleCloseLab}
+          openLab={openLab}
+          labs={labs}
+
+        />}
+
       
       </div>
     
@@ -239,6 +260,7 @@ function Labs() {
         paginate={setCurrentPage}
         currentPage={currentPage}
       />
+      
     </div>
   )
 }

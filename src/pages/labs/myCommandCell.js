@@ -2,13 +2,18 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 
 export const MyCommandCell = (props) => {
-  const { dataItem, remove } = props;
+  const { dataItem, remove ,handleClickOpenLab} = props;
   // console.log(dataItem)
   const inEdit = dataItem[props.editField];
 
   return !inEdit ? (
     <td className="k-command-cell">
-    
+     <Button
+        className="BTNEdit"
+        onClick= {handleClickOpenLab}
+            >
+        view Lab
+      </Button>
       <Button
         className="BTNremove"
         onClick={() => {
