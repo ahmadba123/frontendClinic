@@ -14,7 +14,7 @@ import {
   }
     from "@progress/kendo-react-grid";
 function ViewLab(props) {
-  const {handleCloseLab,openLab,handleClickOpenLab,labs } = props;
+  const {handleCloseLab,openLab,lab ,labs,getbyIdDataLab} = props;
 
   return (
     <div>

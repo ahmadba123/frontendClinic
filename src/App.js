@@ -5,9 +5,10 @@ import Layout from "./components/Layout/Layout";
 import Doctor from "./pages/doctor/doctor";
 import Home from "./pages/home/home";
 import EditProfile from "./pages/editProfile/editProfile"
-import Labs from "./pages/labs/labs"
+import Labs from "./pages/Services/Services"
+import Services from "./pages/Services/Services"
 import Financial from "./pages/financial/financial"
-import Vistior from "./pages/vistior/vistior"
+import Vistior from "./pages/vistior/Visit"
 import Patient from "./pages/Patient/Patient";
 import Login from "./pages/logIn/login"
 import ProtectedRoutes from "./components/ProtectedRoutes";
@@ -17,6 +18,7 @@ import NotFound from "./pages/logIn/NotFound"
 import '@progress/kendo-theme-default/dist/all.css';
 
 import ScheduleDoctor from "./components/ScheduleDoctor";
+import Lab from "./pages/lab/lab";
 
 
 
@@ -47,13 +49,15 @@ function App() {
 
                
                 <Route path="/home" element={<Home />} />
-                <Route path="/service" element={<Labs />}></Route>
+                <Route path="/service" element={<Services />}></Route>
                 <Route path="/doctor" element={<Doctor />}></Route>
                 <Route path="/editProfile" element={<EditProfile />}></Route>
                 <Route path="/financial" element={<Financial />}></Route>
-                <Route path="/vistior" element={<Vistior />}></Route>
+                <Route path="/visit" element={<Vistior />}></Route>
                 <Route path="/patient" element={<Patient />}></Route>
                 <Route path="/schedule" element={<ScheduleDoctor />}></Route>
+                <Route path="/lab" element={<Lab />}></Route>
+
 
             <Route path="/*" element={<NotFound />} />
 

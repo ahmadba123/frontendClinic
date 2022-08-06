@@ -25,7 +25,7 @@ const getAllData = async () => {
       .then((res) => {
        
         setscheduleDoctor(res.data.responce)
-        console.log(res.data.response)
+        // console.log(res.data.response)
        
       })
       .catch((err) => console.log(err));

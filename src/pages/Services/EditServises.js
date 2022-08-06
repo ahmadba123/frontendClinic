@@ -35,7 +35,7 @@ export default function EditServises(props) {
           open={props.formState.open}
           onClose={props.handleClose}
         >
-          <DialogTitle>Add new labs</DialogTitle>
+          <DialogTitle>Add new services</DialogTitle>
           <DialogContent>
             <TextField
               required

@@ -27,7 +27,6 @@ function Labs() {
 
   const [dataItem, setDataItem] = useState({})
 
-  const [openLab, setOpenLab] = useState(false);
   const [open, setOpen] = useState(false)
   // const [countlab, setcountlab] = useState(0);
   //
@@ -39,14 +38,7 @@ function Labs() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = searchedServices.slice(indexOfFirstPost, indexOfLastPost);
 
-const handleClickOpenLab = () => {
-  setOpenLab(true);
-};
 
-
-const handleCloseLab = () => {
-  setOpenLab(false);
-};
   const setInputsearch = (value) => {
   const searchedData = services.filter((val) => {
     if (value === "") {
@@ -65,6 +57,8 @@ const handleCloseLab = () => {
     getAllData();
     // Viewinfo()
     getAllDataLab();
+    // getbyIdDataLab();
+    
   }, []);
   const getAllData = async () => {
     try {
@@ -76,7 +70,7 @@ const handleCloseLab = () => {
           setServices(res.data.response);
           // setcountPatient(res.data.countPatient)
           setSearchedServices(res.data.response)
-          console.log(res.data)
+          // console.log(res.data)
           // const notes = setDoctors;
 
           for (let i = 0; i < allNotes.length; i++) {
@@ -88,6 +82,9 @@ const handleCloseLab = () => {
       console.log(e);
     }
   };
+  
+
+
   const getAllDataLab = async () => {
     try {
 
@@ -97,7 +94,7 @@ const handleCloseLab = () => {
           const allNotes = res.data.response;
           setLabs(res.data.response);
           // setcountPatient(res.data.countPatient)
-          console.log("labs",res.data.response)
+          // console.log("labs",res.data.response)
           // const notes = setDoctors;
 
           for (let i = 0; i < allNotes.length; i++) {
@@ -122,8 +119,8 @@ const handleCloseLab = () => {
           handleOpenEdit(data)
           setDataItem(data);
         }}
-        handleClickOpenLab={handleClickOpenLab}
-
+        // getbyIdDataLab={getbyIdDataLab}
+        // handleClickOpenLab={handleClickOpenLab}
       />
     );
   }
@@ -220,14 +217,7 @@ const handleCloseLab = () => {
           labs={labs}
 
         />}
-      {openLab &&  
-      <ViewLab
-          handleClickOpenLab={handleClickOpenLab}
-          handleCloseLab={handleCloseLab}
-          openLab={openLab}
-          labs={labs}
-
-        />}
+      
 
       
       </div>

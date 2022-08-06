@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineHome } from "react-icons/ai";
 import{BsPeople} from "react-icons/bs";
 import{ImLab} from "react-icons/im";
+import {FaHospital}from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import{TbZoomMoney} from "react-icons/tb";
 import "./sideBar.css";
@@ -73,6 +74,16 @@ const logout = () => {
           </li>
           <li >
             <NavLink 
+            to="/lab"
+             onClick={() => setShowNav(false)}
+             className={({ isActive }) => (isActive ? "link-active" : "link")}
+             >
+              <FaHospital />
+              Labs
+            </NavLink>
+          </li>
+          <li >
+            <NavLink 
             to="/patient"
              onClick={() => setShowNav(false)}
              className={({ isActive }) => (isActive ? "link-active" : "link")}
@@ -93,7 +104,7 @@ const logout = () => {
           </li>
           <li >
             <NavLink 
-            to="/vistior"
+            to="/visit"
              onClick={() => setShowNav(false)}
              className={({ isActive }) => (isActive ? "link-active" : "link")}
              >
