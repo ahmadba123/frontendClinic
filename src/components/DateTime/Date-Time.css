@@ -1,0 +1,21 @@
+.date1{
+    color: black;
+    margin-right: 20px;
+}
+.DateTime{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 40px;
+    background-color: #EDEDED;
+    margin-left: -3px;
+
+}
+.BsCalendarWeek{
+    margin-right: 1rem;
+}
+.BsClock{
+    margin-right: 1rem;
+   /* margin-top: 1rem;  */
+}

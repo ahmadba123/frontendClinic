@@ -1,0 +1,47 @@
+.pageHome{
+    display: flex;
+    flex-direction: column;
+}
+.allCard{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 1rem;
+
+}
+.allCradPrice{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+.nbOfDr{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #455CC7;
+    width: 20%;
+    height: 20vh;
+align-items: center;
+border-radius: 10px;
+}
+.nbOfDr:hover {
+    background-color: rgb(9, 14, 83);
+    color: blueviolet;
+border-radius: 20px;
+
+  }
+.allCradlabs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+.nbCardDr{
+    font-size: 30px;
+    color: white;
+}

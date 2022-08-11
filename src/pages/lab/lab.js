@@ -18,7 +18,7 @@ function Lab() {
   const [labs, setLabs] = useState([]);
   const [searchedLabs, setSearchedLabs] = useState([])
   const [open, setOpen] = useState(false)
-  // const [countlab, setcountlab] = useState(0);
+  const [countlab, setcountlab] = useState(0);
 
   const [openEdit, setOpenEdit] = useState({ open: false, data: {} });
   const [dataItem, setDataItem] = useState({})
@@ -45,11 +45,11 @@ function Lab() {
       await axios
         .get(`http://localhost:8000/api/lab/`)
         .then((res) => {
-          const allNotes = res.data.response;
-          setLabs(res.data.response);
-          // setcountPatient(res.data.countPatient)
-          setSearchedLabs(res.data.response)
-          // console.log(res.data)
+          const allNotes = res.data.lab;
+          setLabs(res.data.lab);
+          setcountlab(res.data.countLab)
+          setSearchedLabs(res.data.lab)
+          console.log(res.data)
 
 
           for (let i = 0; i < allNotes.length; i++) {
@@ -170,6 +170,7 @@ function Lab() {
           >
             + new service
           </Button>
+          <span className='spanNbPatient'>number of labs: {countlab}</span>
 
         </div>
 

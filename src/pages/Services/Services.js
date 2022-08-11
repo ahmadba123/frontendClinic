@@ -93,8 +93,8 @@ function Labs() {
       await axios
         .get(`http://localhost:8000/api/lab/`)
         .then((res) => {
-          const allNotes = res.data.response;
-          setLabs(res.data.response);
+          const allNotes = res.data.lab;
+          setLabs(res.data.lab);
           // setcountPatient(res.data.countPatient)
           // console.log("labs",res.data.response)
           // const notes = setDoctors;

@@ -90,30 +90,32 @@ export default function EditServises(props) {
 
 
             />
-              <FormControl fullWidth>
+    <FormControl fullWidth 
+              margin="dense"
 
-<InputLabel id="demo-simple-select-label">labs</InputLabel>
-<Select
-  required
-  autoFocus
-  margin="dense"
-  id="lab.name"
-  labelId="demo-simple-select-label"
-  variant="standard"
+                // className='inputVisit'
+            >
 
-  label="labs"
-  onChange={handleChange}
-  name='lab'
-  className='inputVisit'
-  defaultValue={props.formState.data.lab || ''}
+              <InputLabel id="demo-simple-select-label">lab</InputLabel>
+              <Select
+                required
+                autoFocus
+                margin="dense"
+                id="lab.name"
+                labelId="demo-simple-select-label"
+                variant="standard"
 
->
-  {/* <MenuItem></MenuItem> */}
-  {props.labs.map(lab => {
-    return <MenuItem value={lab._id}>{lab.name}</MenuItem>
-  })}
-</Select>
-</FormControl>
+                label="lab"
+                onChange={handleChange}
+                name='lab'
+                // className='inputVisit'
+
+              >
+                {props.labs.map(lab => {
+                  return <MenuItem value={lab._id}>{lab.name}</MenuItem>
+                })}
+              </Select>
+            </FormControl>
                
              
             
