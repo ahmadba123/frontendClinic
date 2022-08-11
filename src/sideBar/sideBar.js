@@ -92,7 +92,7 @@ const logout = () => {
               patient
             </NavLink>
           </li>
-          <li >
+          {/* <li >
             <NavLink 
             to="/financial"
              onClick={() => setShowNav(false)}
@@ -101,7 +101,7 @@ const logout = () => {
               <TbZoomMoney />
               financial                     
             </NavLink>
-          </li>
+          </li> */}
           <li >
             <NavLink 
             to="/visit"

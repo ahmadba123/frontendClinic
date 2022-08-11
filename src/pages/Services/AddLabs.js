@@ -7,7 +7,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 export default function AddLabs(props) {
 
@@ -33,7 +36,7 @@ export default function AddLabs(props) {
           open={props.open}
           onClose={props.handleClose}
         >
-          <DialogTitle>Add new labs</DialogTitle>
+          <DialogTitle>Add new services</DialogTitle>
           <DialogContent>
             <TextField
               required
@@ -87,24 +90,29 @@ export default function AddLabs(props) {
               variant="standard"
               name='lab.name'
             /> */}
-            <lable>type</lable><br />
-            <select
-              autoFocus
-              margin="dense"
-              id="lab.name"
-              label="enter lab"
-              fullWidth
-              variant="standard"
-              name='lab'
-              onChange={handleChange}
-            >
-              <option></option>
-              {props.labs.map(lab => {
-                return <option value={lab._id}>{lab.name}</option>
-              })}
+            <FormControl fullWidth>
 
+<InputLabel id="demo-simple-select-label">labs</InputLabel>
+<Select
+  required
+  autoFocus
+  margin="dense"
+  id="lab.name"
+  labelId="demo-simple-select-label"
+  variant="standard"
 
-            </select>
+  label="labs"
+  onChange={handleChange}
+  name='lab'
+  className='inputVisit'
+
+>
+  {/* <MenuItem></MenuItem> */}
+  {props.labs.map(lab => {
+    return <MenuItem value={lab._id}>{lab.name}</MenuItem>
+  })}
+</Select>
+</FormControl>
 
 
 

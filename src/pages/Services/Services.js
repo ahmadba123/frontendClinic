@@ -13,6 +13,8 @@ import {
   // GridRow,
 }
   from "@progress/kendo-react-grid";
+import moment from 'moment';
+
 // import { ExcelExport } from "@progress/kendo-react-excel-export";
 import Pagination from "../../components/pagination/pagination" 
 import "./labs.css"
@@ -106,6 +108,9 @@ function Labs() {
       console.log(e);
     }
   };
+  const FormatCellDate = (e) => {
+    return (<td>{moment(e.dataItem[e.field]).format('DD-MMM-yyyy')}</td>);
+}
   const CommandCell = (map) => {
     // console.log(map)
     return (
@@ -226,6 +231,7 @@ function Labs() {
           handleClose={handleClose}
           editById={(data, id) => editById(data, id)}
           formState={openEdit} setEditData={setOpenEdit}
+          labs={labs}
          />
 
       <Grid className='tabledrivergrid'

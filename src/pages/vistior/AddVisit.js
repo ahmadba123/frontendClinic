@@ -57,6 +57,20 @@ export default function AddVisit(props) {
               variant="standard"
               name='description'
               className='inputVisit'
+
+            />
+              <TextField
+              required
+              autoFocus
+              margin="dense"
+              id="date"
+              label=""
+              onChange={handleChange}
+              type="date"
+              fullWidth
+              variant="standard"
+              name='date'
+              className='inputVisit'
             />
 
 
@@ -76,31 +90,37 @@ export default function AddVisit(props) {
 
 
             />
-            <FormControl fullWidth>
+            
+            <FormControl fullWidth 
+              margin="dense"
 
-              <InputLabel id="demo-simple-select-label">labs</InputLabel>
+                // className='inputVisit'
+            >
+
+              <InputLabel id="demo-simple-select-label">services</InputLabel>
               <Select
                 required
                 autoFocus
                 margin="dense"
-                id="lab.name"
+                id="service.name"
                 labelId="demo-simple-select-label"
                 variant="standard"
 
-                label="labs"
+                label="service"
                 onChange={handleChange}
-                name='lab'
-                className='inputVisit'
+                name='service'
+                // className='inputVisit'
 
               >
-                {/* <MenuItem></MenuItem> */}
-                {props.labs.map(lab => {
-                  return <MenuItem value={lab._id}>{lab.name}</MenuItem>
+                {props.service.map(services => {
+                  return <MenuItem value={services._id}>{services.name}</MenuItem>
                 })}
               </Select>
             </FormControl>
 
-            <FormControl fullWidth>
+            <FormControl fullWidth
+              margin="dense"
+            >
 
               <InputLabel id="demo-simple-select-label">patinet</InputLabel>
               <Select
@@ -112,16 +132,20 @@ export default function AddVisit(props) {
                 label="patient"
                 onChange={handleChange}
                 name='patient'
-                className='inputVisit'
+                // className='inputVisit'
+                variant="standard"
+
 
               >
                 <MenuItem></MenuItem>
                 {props.patient.map(patinets => {
-                  return <MenuItem value={patinets._id}>{patinets.firstName}</MenuItem>
+                  return <MenuItem value={patinets._id}>{`${patinets.firstName} ${patinets.lastName}`}</MenuItem>
                 })}
               </Select>
             </FormControl>
-            <FormControl fullWidth>
+            <FormControl fullWidth
+              margin="dense"
+            >
 
               <InputLabel id="demo-simple-select-label">doctor</InputLabel>
               <Select
@@ -133,7 +157,9 @@ export default function AddVisit(props) {
                 label="doctor"
                 onChange={handleChange}
                 name='doctor'
-                className='inputVisit'
+                variant="standard"
+
+                // className='inputVisit'
 
               >
                 <MenuItem></MenuItem>
@@ -142,7 +168,9 @@ export default function AddVisit(props) {
                 })}
               </Select>
             </FormControl>
-            <FormControl fullWidth>
+            <FormControl fullWidth
+              margin="dense"
+            >
 
               <InputLabel id="demo-simple-select-label">price</InputLabel>
               <Select
@@ -154,7 +182,9 @@ export default function AddVisit(props) {
                 label="price"
                 onChange={handleChange}
                 name='price'
-                className='inputVisit'
+                variant="standard"
+
+                // className='inputVisit'
 
               >
                 <MenuItem></MenuItem>

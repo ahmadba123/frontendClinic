@@ -11,7 +11,7 @@ import {
   // GridRow,
 }
   from "@progress/kendo-react-grid";
-import Pagination from "../../components/pagination/pagination" 
+import Pagination from "../../components/pagination/pagination"
 import EditLabs from './EditLabs';
 
 function Lab() {
@@ -19,7 +19,7 @@ function Lab() {
   const [searchedLabs, setSearchedLabs] = useState([])
   const [open, setOpen] = useState(false)
   // const [countlab, setcountlab] = useState(0);
-  
+
   const [openEdit, setOpenEdit] = useState({ open: false, data: {} });
   const [dataItem, setDataItem] = useState({})
 
@@ -37,7 +37,7 @@ function Lab() {
     // Viewinfo()
     // getAllDataLab();
     // getbyIdDataLab();
-    
+
   }, []);
   const getAllData = async () => {
     try {
@@ -50,10 +50,10 @@ function Lab() {
           // setcountPatient(res.data.countPatient)
           setSearchedLabs(res.data.response)
           // console.log(res.data)
-    
+
 
           for (let i = 0; i < allNotes.length; i++) {
-            allNotes[i].id = i+1;
+            allNotes[i].id = i + 1;
           }
         })
         .catch((err) => console.log(err));
@@ -85,16 +85,16 @@ function Lab() {
 
   const remove = async (item) => {
     // console.log(item)
-    await axios.delete(`http://localhost:8000/api/service/${item._id}`);
-    // console.log(item)
+    await axios.delete(`http://localhost:8000/api/lab/${item._id}`);
+    console.log(item)
     let index = labs.filter((record) => record._id !== item._id);
     console.log("patients: ", index);
-    for (let i = 0; i < index.length; i++) {
-      index[i].id = i;
-    }
-    setLabs(index);
-    getAllData();
-    alert("deleted")
+      for (let i = 0; i < index.length; i++) {
+        index[i].id = i;
+      }
+      setLabs(index);
+      getAllData();
+      alert("deleted")
   };
 
   const handleClose = () => {
@@ -110,7 +110,7 @@ function Lab() {
     // let data = [], id = 3;
     try {
       await axios
-        .put(`http://localhost:8000/api/service/${args.id}`, args.data)
+        .put(`http://localhost:8000/api/lab/${args.id}`, args.data)
         .then((res) => {
           // const allNotes = res.data;
           getAllData();
@@ -138,28 +138,28 @@ function Lab() {
       // }
     })
     setSearchedLabs(searchedData)
-    }
-  
-    const CommandCell = (map) => {
-      // console.log(map)
-      return (
-        <MyCommandCell
-          {...map}
-          // Viewinfo={Viewinfo}
-          remove={remove}
-          // // dataItem={map.dataItem}
-          // services={services}
-          clickEdit={(data) => {
-            handleOpenEdit(data)
-            setDataItem(data);
-          }}
-       
-        />
-      );
-    }
+  }
+
+  const CommandCell = (map) => {
+    // console.log(map)
+    return (
+      <MyCommandCell
+        {...map}
+        // Viewinfo={Viewinfo}
+        remove={remove}
+        // // dataItem={map.dataItem}
+        // services={services}
+        clickEdit={(data) => {
+          handleOpenEdit(data)
+          setDataItem(data);
+        }}
+
+      />
+    );
+  }
 
   return (
-     <div className='container coantainerPatient'>
+    <div className='container coantainerPatient'>
       <div className='headerPatient'>
         <div className='headerPatient1'>
           <Button
@@ -170,33 +170,32 @@ function Lab() {
           >
             + new service
           </Button>
-        
+
         </div>
-      
+
 
         <div className='SearchPatient'>
-          <SearchInput onChange={(event) => 
-          { 
-            setInputsearch(event.target.value) 
-          
+          <SearchInput onChange={(event) => {
+            setInputsearch(event.target.value)
+
           }}
-           />
+          />
         </div>
-      
+
         {open && <AddLabs
           handleClose={() => setOpen(false)}
           addNewLab={addNewLab}
           open={open}
 
         />}
-          <EditLabs 
+        <EditLabs
           handleClose={handleClose}
           editById={(data, id) => editById(data, id)}
           formState={openEdit} setEditData={setOpenEdit}
-         />
-    
-    </div>
-    <Grid className='tabledrivergrid'
+        />
+
+      </div>
+      <Grid className='tabledrivergrid'
         data={currentPosts}
         style={{
         }}        >
@@ -205,7 +204,7 @@ function Lab() {
         <GridColumn field="address" title=" address" width="230px" className='fieldTable ' />
         <GridColumn field="phone" title="phone" width="230px" className='fieldTable' />
 
-        
+
         <GridColumn cell={CommandCell} width="259px" title="Action" className='fieldTableAction' />
 
 

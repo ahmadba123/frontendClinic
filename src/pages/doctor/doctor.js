@@ -6,6 +6,9 @@ import AddPatient from './addDoctor/addDoctor'
 import axios from "axios";
 import ViewInfo from './viewInfo/ViewInfo';
 import Button from "@mui/material/Button";
+import Moment from 'react-moment';
+import moment from 'moment';
+
 // import ScheduleDoctor from '../../components/ScheduleDoctor';
 import {
   Grid,
@@ -16,7 +19,7 @@ import {
   from "@progress/kendo-react-grid";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import Pagination from "../../components/pagination/pagination"
-
+// import moment from 'moment';
 
 function Doctor(props) {
   const [doctors, setDoctors] = useState([]);
@@ -26,16 +29,21 @@ function Doctor(props) {
   const [countdoctor, setcountDoctor] = useState(0);
   const [openViewInfo, setopenViewInfo] = useState(false)
   const [viewInfo, setViewInfo] = useState('')
-//
-const [currentPage, setCurrentPage] = useState(1);
+  //
+  const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
- 
+
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = searchedDrivers.slice(indexOfFirstPost, indexOfLastPost);
 
 
+  // const date = new Date('2018-03-13T00:00:00Z')
+  //   var moment= require('moment');
+  // let date
+  // date = moment(currentPosts.dob).format("MMM Do YY")
+  // console.log("ds",date)
 
 
   useEffect(() => {
@@ -53,11 +61,12 @@ const [currentPage, setCurrentPage] = useState(1);
           setcountDoctor(res.data.countdoctor)
           setSearchedDrivers(res.data.doctor)
           // const notes = setDoctors;
-          console.log(res.data);
+          // console.log(res.data);
 
           for (let i = 0; i < allNotes.length; i++) {
-            allNotes[i].id = i+1;
-     } })
+            allNotes[i].id = i + 1;
+          }
+        })
         .catch((err) => console.log(err));
     } catch (e) {
       console.log(e);
@@ -129,7 +138,9 @@ const [currentPage, setCurrentPage] = useState(1);
   //     console.log(e);
   //   }
   // }
-
+  const FormatCellDate = (e) => {
+    return (<td>{moment(e.dataItem[e.field]).format('DD-MM-yyyy')}</td>);
+  }
   const CommandCell = (map) => {
     // console.log(map)
     return (
@@ -171,15 +182,15 @@ const [currentPage, setCurrentPage] = useState(1);
             sx={{ color: "white", background: "#455CC7" }}
             className="addBtnadmin"
             variant="outlined"
-            // onClick={addNewDriver}
+          // onClick={addNewDriver}
           >
             + new doctor
           </Button>
           <span className='spanNbDoctor'> Number of Doctors: {countdoctor}</span>
         </div>
         <div className='Search'>
-        <SearchInput onChange={(event) => { setInputsearch(event.target.value) }} />
-</div>
+          <SearchInput onChange={(event) => { setInputsearch(event.target.value) }} />
+        </div>
         {/* {openViewInfo && <ScheduleDoctor
           ViewInfohandleClose={() => setopenViewInfo(false)}
           viewInfo={viewInfo}
@@ -198,9 +209,12 @@ const [currentPage, setCurrentPage] = useState(1);
         <GridColumn field="name" title=" Name" width="170px" className='fieldTable' />
         <GridColumn field="phone" title=" phone" width="170px" className='fieldTable ' />
         <GridColumn field="domain.name" title="domain" width="160px" className='fieldTable' />
-        <GridColumn field="dob" title="DOB" width="170px" className='fieldTable' />
+        <GridColumn field="dob"
+          filter="date"
+          cell={FormatCellDate}
+          title="DOB" width="170px" className='fieldTable' />
         <GridColumn cell={CommandCell} width="280px" title="Action" className='fieldTableAction' />
-    
+
 
 
       </Grid>

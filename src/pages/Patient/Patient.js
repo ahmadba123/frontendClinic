@@ -5,6 +5,8 @@ import AddPatient from './AddPatinet'
 import EditPatinet from './EditPatinet';
 import axios from "axios";
 import "./Patient.css";
+import moment from 'moment';
+
 // import ViewInfo from './viewInfo/ViewInfo';
 import Button from "@mui/material/Button";
 import {
@@ -127,6 +129,10 @@ function Patient() {
     }
   };
 
+  const FormatCellDate = (e) => {
+    return (<td>{moment(e.dataItem[e.field]).format('DD-MM-yyyy')}</td>);
+}
+
   const CommandCell = (map) => {
     // console.log(map)
     return (
@@ -211,7 +217,10 @@ function Patient() {
         <GridColumn field="motherName" title="motherName" width="110px" className='fieldTable' />
         <GridColumn field="fatherName" title="fatherName" width="110px" className='fieldTable' />
         <GridColumn field="phone" title="phone" width="110px" className='fieldTable' />
-        <GridColumn field="dob" title="DOB" width="130px" className='fieldTable' />
+        <GridColumn field="dob" title="DOB"
+        filter="date"
+        cell={FormatCellDate} 
+         width="130px" className='fieldTable' />
         <GridColumn field="address" title="address" width="120px" className='fieldTable' />
         <GridColumn cell={CommandCell} width="170px" title="Action" className='fieldTableAction' />
 

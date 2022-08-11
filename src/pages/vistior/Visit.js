@@ -12,14 +12,17 @@ import {
 }
   from "@progress/kendo-react-grid";
 import Pagination from "../../components/pagination/pagination";
+import moment from 'moment';
 
 function Visit() {
   const [visit, setVisit] = useState([]);
   const [searchedVisit, setSearchedVisit] = useState([])
-  const [labs, setLabs] = useState([]);
+  const [service, setservice] = useState([]);
   const [patient, setPatient] = useState([]);
   const [doctor, setDoctor] = useState([]);
   const [price, setPrice] = useState([]);
+  const [countVisit, setcountVisit] = useState([]);
+
 
 
   const [open, setOpen] = useState(false)
@@ -36,7 +39,7 @@ function Visit() {
 
   useEffect(() => {
     getAllData();
-    getAllDataLab();
+    getAllDataService();
     getAllDataPrice();
     getAllDataPatient();
     getAllDataDoctor();
@@ -47,11 +50,12 @@ function Visit() {
       await axios
         .get(`http://localhost:8000/api/visit/`)
         .then((res) => {
-          const allNotes = res.data.response;
-          setVisit(res.data.response);
-          // setcountPatient(res.data.countPatient)
-          setSearchedVisit(res.data.response)
-          console.log(res.data)
+          const allNotes = res.data.visit;
+          setVisit(res.data.visit);
+          setcountVisit(res.data.countvisit);
+
+          setSearchedVisit(res.data.visit)
+          console.log("lllllll",res)
     
 
           for (let i = 0; i < allNotes.length; i++) {
@@ -86,14 +90,14 @@ function Visit() {
       console.log(e);
     }
   }
-  const getAllDataLab = async () => {
+  const getAllDataService = async () => {
     try {
 
       await axios
-        .get(`http://localhost:8000/api/lab/`)
+        .get(`http://localhost:8000/api/service/`)
         .then((res) => {
-          setLabs(res.data.response);
-
+          setservice(res.data.response);
+            console.log(res.data.response)
         })
         .catch((err) => console.log(err));
     } catch (e) {
@@ -159,7 +163,27 @@ function Visit() {
     getAllData();
     alert("deleted")
   };
+  const setInputsearch = (value) => {
 
+    // console.log("value:", value)
+
+
+    const searchedData = visit.filter((val) => {
+      if (value === "") {
+        return val;
+      }
+      else if (val.doctor.name.toLowerCase().includes(value.toLowerCase())) {
+        return val;
+      }
+      // else if (val.lastName.toLowerCase().includes(value.toLowerCase())) {
+      //   return val;
+      // }
+    })
+    setSearchedVisit(searchedData)
+  }
+  const FormatCellDate = (e) => {
+    return (<td>{moment(e.dataItem[e.field]).format('DD-MM-yyyy')}</td>);
+}
   const CommandCell = (map) => {
     // console.log(map)
     return (
@@ -189,13 +213,16 @@ function Visit() {
           >
             + new visit
           </Button>
+          <span className='spanNbPatient'> Number of visit:  {countVisit}
+            {/* {countPatient} */}
+          </span>
 
         </div>
 
 
         <div className='SearchPatient'>
           <SearchInput onChange={(event) => {
-            // setInputsearch(event.target.value) 
+            setInputsearch(event.target.value) 
 
           }}
           />
@@ -205,7 +232,7 @@ function Visit() {
           handleClose={() => setOpen(false)}
           addNewVisit={addNewVisit}
           open={open}
-          labs={labs}
+          service={service}
           patient={patient}
           doctor={doctor}
           price={price}
@@ -217,12 +244,27 @@ function Visit() {
         style={{
         }}        >
         <GridColumn field="id" title="ID" width="50px" />
-        <GridColumn field="description" title=" desc" width="138px" className='fieldTable' />
-        <GridColumn field="symptoms" title=" symptoms" width="138px" className='fieldTable ' />
-        <GridColumn field="price.amount" title="price" width="120px" className='fieldTable' />
-        <GridColumn field="doctor.name" title="doctor" width="130px" className='fieldTable' />
-        <GridColumn field="patient.firstName" title="patient" width="138px" className='fieldTable' />
-        <GridColumn field="lab.name" title="lab" width="120px" className='fieldTable' />
+
+        <GridColumn title="patient" width="180px" className='fieldTable' >
+        <GridColumn field="patient.firstName" width="100px" title="firstName" ></GridColumn>
+        <GridColumn field="patient.lastName" width="80px" title="lastName"></GridColumn>
+        </GridColumn>
+
+        <GridColumn field="doctor.name" title="doctor" width="120px" className='fieldTable' />
+
+        <GridColumn title="service" width="180px" className='fieldTable' >
+        <GridColumn field="service.name" title="name" width="100px" className='fieldTable' />
+        <GridColumn field="service.price" title="price" width="80px" className='fieldTable' />
+
+        </GridColumn>
+
+        <GridColumn field="price.amount" title="price visit" width="100px" className='fieldTable' />
+        <GridColumn field="date" title="Date"
+          filter="date"
+        cell={FormatCellDate} 
+         width="100px" className='fieldTable' />
+        {/* <GridColumn field="description" title=" desc" width="120px" className='fieldTable' /> */}
+        <GridColumn field="symptoms" title=" symptoms" width="100px" className='fieldTable ' />
 
 
 

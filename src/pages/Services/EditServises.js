@@ -7,7 +7,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 export default function EditServises(props) {
   let {editById, } = props;
 
@@ -87,22 +90,30 @@ export default function EditServises(props) {
 
 
             />
-               <TextField
-              required
-              autoFocus
-              margin="dense"
-              id="lab.name"
-              label="lab"
-              onChange={handleChange}
-              type="string"
-              fullWidth
-              variant="standard"
-              name='lab.name'
-            //   value={props.formState.data?.lab || ''}
-            // defaultValue={props.formState.data.lab || ''}
+              <FormControl fullWidth>
 
+<InputLabel id="demo-simple-select-label">labs</InputLabel>
+<Select
+  required
+  autoFocus
+  margin="dense"
+  id="lab.name"
+  labelId="demo-simple-select-label"
+  variant="standard"
 
-            />
+  label="labs"
+  onChange={handleChange}
+  name='lab'
+  className='inputVisit'
+  defaultValue={props.formState.data.lab || ''}
+
+>
+  {/* <MenuItem></MenuItem> */}
+  {props.labs.map(lab => {
+    return <MenuItem value={lab._id}>{lab.name}</MenuItem>
+  })}
+</Select>
+</FormControl>
                
              
             
